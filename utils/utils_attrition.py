@@ -5,11 +5,26 @@ from IPython.core.display import HTML
 from IPython.display import display_html
 import warnings
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import confusion_matrix, recall_score, precision_score, accuracy_score
 import matplotlib.pyplot as plt
 from sklearn import tree
+import csv
+import warnings
+warnings.filterwarnings('ignore')
+from pivottablejs import pivot_ui
+from IPython.core.display import HTML
+from itertools import repeat
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from ipywidgets import interact
+from sklearn.model_selection import cross_val_predict, train_test_split, GridSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC, SVC
 
+pd.set_option('display.max_colwidth', None)
+pd.set_option("display.precision", 2)
 warnings.filterwarnings('ignore')
 
 
@@ -185,3 +200,49 @@ def y_counter(y):
                    "dropped": 'background-color: #ffe6e6'}
     y_ = y_.style.apply(lambda x: x.index.map(color_cells))
     return display(y_)
+
+def performance_plot(performance):
+    # prettifying df to present results
+    performance *= 100 # convert to %
+    features = ['all'] * 8 + ['personal'] * 8 # list of 4 models total for each subset x2 for each split => 8
+    features = pd.DataFrame(features, columns=['Subset']).T
+    cols = ['LR', 'DT', 'SVM', 'RBF_SVM']*2 # list of models used
+
+    performance.columns = cols
+    performance = performance.T
+    performance.columns = [['Train', 'Train', 'Train', 'Test', 'Test', 'Test'], ['Recall', 'Precision', 'Accuracy', 'Recall', 'Precision', 'Accuracy']]
+    performance = performance.apply(pd.to_numeric, errors='ignore')
+    performance = performance.stack(0).reset_index()
+    performance = pd.concat([performance, features.T], axis=1)
+    performance.rename(columns={'level_0':'Model', 'level_1':'Split'}, inplace=True)
+    performance['Accuracy'] = performance['Accuracy'].round(1)
+    
+    fig = px.scatter(performance, title="Precision/recall/accuracy scatter plots", x="Recall",
+                     y="Precision", color="Model", text='Accuracy', facet_col="Split", facet_row="Subset")
+    fig.update_traces(textposition="middle right", textfont_size=5)
+    fig.update_layout(legend=dict(font=dict(size=8),
+                                  orientation="h",
+                                  yanchor="bottom",
+                                  y=1, title=' ',
+                                  xanchor="right",
+                                  x=1),
+                      width=550,
+                      height=400, legend_title=dict(font=dict(size=8)))
+    # subplot title fonts size
+    fig.update_annotations(font_size=8)
+    fig.add_annotation(dict(font=dict(color='black', size=8),
+                            x=0,
+                            y=-.25,
+                            showarrow=False,
+                            text="Accuracy is represented by numbers next to dots",
+                            textangle=0,
+                            xanchor='left',
+                            xref="paper",
+                            yref="paper"))
+    fig.update_xaxes(dict(tickfont=dict(size=8)),
+                     title_font=dict(size=8), range=[10, 62])
+    fig.update_yaxes(dict(tickfont=dict(size=8)),
+                     title_font=dict(size=8), range=[10, 18.5])
+    fig.write_image("Precision_recall_accuracy_plots.png", scale=10)
+
+    
