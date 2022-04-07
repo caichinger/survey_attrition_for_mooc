@@ -127,3 +127,26 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+10017_da_de_v2_0.tab
+10017_da_de_v2_0.zsav
+10017_da_en_v2_0.tab
+10017_da_en_v2_0.zsav
+10017_mr_en_v2_0.pdf
+10017_qu_de_v2_0.pdf
+10017_qu_en_v2_0.pdf
+10017_vi_de_v2_0.tab
+10017_vi_en_v2_0.tab
+data_online_personal_w1.csv
+data_online_personal_w2.csv
+data_online_personal_w3.csv
+data_online_personal_w4.csv
+data_online_personal_w5.csv
+data_online_personal_w6.csv
+data_online_political_w1.csv
+data_online_political_w2.csv
+data_online_political_w3.csv
+data_online_political_w4.csv
+data_online_political_w5.csv
+data_online_political_w6.csv
