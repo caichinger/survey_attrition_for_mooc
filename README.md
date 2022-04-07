@@ -17,3 +17,9 @@ After clicking on API Token you will be taken to a page (image below) where you 
 Once you have the API Token you can paste it into the `get_data.py` inside the `data/` folder and run it.
 
 
+
+## Austrian National Election Study 2017
+
+The AUTNES panel surveys for the most recent Austrian election in 2017 were collected in two different ways. There exists an online panel study with six waves (4 pre- and 2 post-election) as well as a multi-mode study with phone and online modes (2 pre- and 1 post-election waves each). The modes, sample sizes, and survey times are very well explained [here](https://autnes.at/en/autnes-data/general-election-2017/). In this repository we focus on the online panel.
+
+
