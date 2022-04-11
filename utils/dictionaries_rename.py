@@ -1,10 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+"""
 def get_ordinal_numeric_names():
 
-    dict = {'w3_q6x2':'RANKING INTEREST: MIGRATION TO AUSTRIA FURTHER INCREASES -w3_q6x2',
+    dict = {}
+    
+    return dict
+"""
+
+def get_ordinal_names():
+
+    dict_ord = {'w3_q6x2':'RANKING INTEREST: MIGRATION TO AUSTRIA FURTHER INCREASES -w3_q6x2',
             'w3_q6x3':'RANKING INTEREST: EU-COMMISSION ASSUMES COMPETENCES -w3_q6x3',
             'w3_q6x4':'RANKING INTEREST: AUSTRIAS ECONOMIC GROWTH DECREASES -w3_q6x4',
             'w3_q6x5':'RANKING INTEREST: AUSTRIA MISSES CLIMATE TARGETS -w3_q6x5',
@@ -41,14 +48,10 @@ def get_ordinal_numeric_names():
             'w5_intdur':'INTERVIEW DURATION IN SECONDS -w5_intdur',
             'w5_dte':'INTERVIEWDATUM (DAYS TO ELECTION DAY) -w5_dte',
             'w6_intdur':'INTERVIEW DURATION IN SECONDS -w6_intdur',
-            'w6_dte':'INTERVIEWDATUM (DAYS TO ELECTION DAY) -w6_dte'}
-    
-    return dict
-
-
-def get_ordinal_str_names():
-
-    dict_ord = {'sd5':'HOUSEHOLD SIZE -sd5',
+            'w6_dte':'INTERVIEWDATUM (DAYS TO ELECTION DAY) -w6_dte',
+        
+        
+            'sd5':'HOUSEHOLD SIZE -sd5',
                 'sd6':'MEMBERS OF HOUSEHOLD YOUNGER THAN 18 YEARS -sd6',
                 'w4_q12x6':'ASSESSMENT - COMPETENCE: PETER PILZ -w4_q12x6',
                 'w4_q13x6':'ASSESSMENT - CHARISMA: PETER PILZ -w4_q13x6',
@@ -1414,7 +1417,6 @@ opinion_questions = ['w1_q2x1',
                      'w1_q27x2',
                      'w1_q27x3',
                      'w1_q27x4',
-                     'w1_q27x5',
                      'w1_q27x6',
                      'w1_q27x7',
                      'w1_q27x8',
@@ -1450,7 +1452,6 @@ opinion_questions = ['w1_q2x1',
                      'w2_q24x2',
                      'w2_q24x3',
                      'w2_q24x4',
-                     'w2_q24x5',
                      'w2_q24x6',
                      'w2_q24x7',
                      'w2_q24x8',
