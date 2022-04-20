@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+# CC: Naming. Why dictionaries_rename.py? What is this module about? What is the name of the last variable?
+# CC: Dead code?
 """
 def get_ordinal_numeric_names():
 
     dict = {}
-    
+
     return dict
 """
-
+# CC: Why get_*() and not import?
+# CC: Why are the mappings not created programmatically?
+# CC: Consider using module to organize names.
 def get_ordinal_names():
 
+    # CC: Why dict_ord and not ordinal names? If you want to express that something is a mapping, do so.
     dict_ord = {'w3_q6x2':'RANKING INTEREST: MIGRATION TO AUSTRIA FURTHER INCREASES -w3_q6x2',
             'w3_q6x3':'RANKING INTEREST: EU-COMMISSION ASSUMES COMPETENCES -w3_q6x3',
             'w3_q6x4':'RANKING INTEREST: AUSTRIAS ECONOMIC GROWTH DECREASES -w3_q6x4',
@@ -49,8 +53,8 @@ def get_ordinal_names():
             'w5_dte':'INTERVIEWDATUM (DAYS TO ELECTION DAY) -w5_dte',
             'w6_intdur':'INTERVIEW DURATION IN SECONDS -w6_intdur',
             'w6_dte':'INTERVIEWDATUM (DAYS TO ELECTION DAY) -w6_dte',
-        
-        
+
+
             'sd5':'HOUSEHOLD SIZE -sd5',
                 'sd6':'MEMBERS OF HOUSEHOLD YOUNGER THAN 18 YEARS -sd6',
                 'w4_q12x6':'ASSESSMENT - COMPETENCE: PETER PILZ -w4_q12x6',
@@ -716,12 +720,13 @@ def get_ordinal_names():
                 'w6_q36x2':'LIKE-DISLIKE: OEVP -w6_q36x2',
                 'w6_q36x3':'LIKE-DISLIKE: FPOE -w6_q36x3',
                 'w6_q38x7':'ASSESSMENT OF POLIT. SITUATION: NERVOUS -w6_q38x7',
-            
+
                 'sd2x2': 'age_group -sd2x2'}
 
     return dict_ord
 
 
+# CC: some communities try to avoid using "dummy"
 def get_dummies_names():
 
     dict_dummies = {'w5_q19': 'INFLUENCE ON VOTE CHOICE: SILBERSTEIN SCANDAL -w5_q19',
@@ -946,11 +951,11 @@ def get_binary_names():
     dict_bin = {'w2_q4x1': 'IMPORTANT ISSUE: JOB MARKET AND EMPLOYMENT -w2_q4x1',
                 'w3_q4x1': 'IMPORTANT ISSUE: JOB MARKET AND EMPLOYMENT -w3_q4x1',
                 'w4_q9x1': 'IMPORTANT ISSUE: JOB MARKET AND EMPLOYMENT -w4_q9x1',
-                'w5_q3x1': 'IMPORTANT ISSUE: JOB MARKET AND EMPLOYMENT -w5_q3x1', 
+                'w5_q3x1': 'IMPORTANT ISSUE: JOB MARKET AND EMPLOYMENT -w5_q3x1',
                 'w2_q4x2': 'IMPORTANT ISSUE: EUROPEAN INTEGRATION -w2_q4x2',
                 'w3_q4x2': 'IMPORTANT ISSUE: EUROPEAN INTEGRATION -w3_q4x2',
                 'w4_q9x2': 'IMPORTANT ISSUE: EUROPEAN INTEGRATION -w4_q9x2',
-                'w5_q3x2': 'IMPORTANT ISSUE: EUROPEAN INTEGRATION -w5_q3x2', 
+                'w5_q3x2': 'IMPORTANT ISSUE: EUROPEAN INTEGRATION -w5_q3x2',
                 'w1_q42x1': 'USE OF SOCIAL NETWORK: FACEBOOK -w1_q42x1',
                 'w1_q42x2': 'USE OF SOCIAL NETWORK: TWITTER -w1_q42x2',
                 'w1_q42x3': 'USE OF SOCIAL NETWORK: SNAPCHAT -w1_q42x3',
@@ -1556,5 +1561,4 @@ opinion_questions = ['w1_q2x1',
                      'w6f_q27x5',
                      'w6_q30x1',
                      'w6_q30x2']
-                     
-    
+

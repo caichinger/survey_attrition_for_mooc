@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
+# CC: Why is this hard coded? Even if, all of the above can be dropped.
 10017_da_de_v2_0.tab
 10017_da_de_v2_0.zsav
 10017_da_en_v2_0.tab

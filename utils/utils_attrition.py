@@ -1,4 +1,13 @@
+# CC: Consider splitting into smaller, different and more targeted modules.
+# * General data handling
+# * Logistic regression
+# * Decision trees
+#
+# CC: Is there data related duplication?
+# Data download and data handling may share functionality.
+#
 # Here are some functions which helped us to make plots or prettify dataframes in $attrition$ notebook
+# CC: Unused imports?
 from sklearn.tree._tree import TREE_LEAF
 import pandas as pd
 from IPython.core.display import HTML
@@ -31,7 +40,7 @@ warnings.filterwarnings('ignore')
 def import_data(wave):
     """brings 2 dataframes with all the features and series with y (panelpat)"""
     # we predict particular wave attrition based on previous one, therefore we subtract 1 from wave number
-    wave = str(int(wave) - 1)
+    wave = str(int(wave) - 1)  # CC: There is a similar line somewhere else :)
     political = pd.read_csv(f'data/data_online_political_w{wave}.csv')
     personal = pd.read_csv(f'data/data_online_personal_w{wave}.csv')
     y = personal['panelpat']
@@ -85,12 +94,12 @@ def get_engineered_feature_names(X_train):
                                 'political_interest',
                                 'dont_know_percentage_mean',
                                 'days_to_respond']
-
+    # CC: Simplify.
     return X_train.loc[:, X_train.columns.isin(engineered_feature_names)].columns
 
 
 def fancy_output_for_lr(coeffs, X_train):
-    feature_coef = pd.DataFrame(coeffs)
+    feature_coef = pd.DataFrame(coeffs)  # CC: Use constructor.
     feature_coef.columns = X_train.columns
     feature_coef.index = ['coef']
     feature_coef = feature_coef.T
@@ -187,7 +196,7 @@ def horizontal_line():
     return display(HTML(line))
 
 
-def h2centered(text):
+def h2centered(text):  # CC: h2 or h3? ;)
     formatted_text = "<center><h3>"+text+"</h3></center>"
     return display(HTML(formatted_text))
 
@@ -219,12 +228,12 @@ def performance_plot(performance):
     performance['Size'] = performance.Accuracy//14 - 2.5
     fig = px.scatter(performance, title="Precision/recall/accuracy scatter plots", x="Recall",
                      y="Precision", color="Model", text='Accuracy', facet_col="Split", facet_row="Subset")
-    fig.for_each_trace(lambda t: t.update(textfont_color=t.marker.color, textfont_size=4.5, textposition='middle right'))   
+    fig.for_each_trace(lambda t: t.update(textfont_color=t.marker.color, textfont_size=4.5, textposition='middle right'))
     fig.update_layout(legend=dict(font=dict(size=8),
                                   orientation="h",
                                   yanchor="bottom",
                                   y=1.05, title=' ',
-                                  xanchor="right", 
+                                  xanchor="right",
                                   x=1),
                       width=550,
                       height=400, legend_title=dict(font=dict(size=8)))
@@ -245,4 +254,4 @@ def performance_plot(performance):
                      title_font=dict(size=8))
     fig.write_image("Precision_recall_accuracy_plots.png", scale=10)
 
-    
+
